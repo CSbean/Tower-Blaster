@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cmwrmmjohrkn7"]
+
+[node name="turret" type="Node3D" unique_id=1242701056]
+
+[node name="turretBace" type="Node3D" parent="." unique_id=361368607]
+
+[node name="turretTop" type="Node3D" parent="turretBace" unique_id=590238690]

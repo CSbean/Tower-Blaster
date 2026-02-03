@@ -1,14 +1,20 @@
 extends CharacterBody3D
+class_name Player
 
-
+# https://www.youtube.com/watch?v=fAVetlIROXM
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-var look_dir: Vector2
 @onready var camera_3d: Camera3D = $Camera3D
+@onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
+
+var look_dir: Vector2
 var camra_sense := 50
 var capMouse := false
 
+func _process(delta: float) -> void:
+	#if ray_cast_3d.is_colliding() and ray_cast_3d.get_collider()
+		pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -40,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 	rotate_camrea(delta)
 	move_and_slide()
-	
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: 
 		look_dir = event.relative * 0.01
