@@ -3,7 +3,7 @@ class_name Player
 
 # https://www.youtube.com/watch?v=fAVetlIROXM
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 5 #3
 
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
@@ -52,7 +52,7 @@ func _input(event: InputEvent) -> void:
 		look_dir = event.relative * 0.01
 
 func rotate_camrea(delta: float, sense_mod: float = 1.0):
-	var input = Input.get_vector("look_left","look_right","look_down","look_up")
+	var input = Input.get_vector("ui_left","ui_right","ui_down","ui_up")
 	look_dir += input
 	rotation.y -= look_dir.x * camra_sense * delta
 	camera_3d.rotation.x = clamp(camera_3d.rotation.x - look_dir.y * camra_sense * sense_mod * delta,-1.5, 1.5)

@@ -1,7 +1,73 @@
 [gd_scene format=3 uid="uid://cmwrmmjohrkn7"]
 
+[ext_resource type="Script" uid="uid://d4kjqcioga1xp" path="res://turret.gd" id="1_c5apd"]
+[ext_resource type="PackedScene" uid="uid://dx7jtvh3khol7" path="res://assets/Cannon.glb" id="2_coqkk"]
+[ext_resource type="PackedScene" uid="uid://bpjt5rii15mlj" path="res://assets/TurretBase.glb" id="3_2kw7u"]
+
+[sub_resource type="Animation" id="Animation_c5apd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("turretBace/turretTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_coqkk"]
+resource_name = "shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("turretBace/turretTop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.2), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2kw7u"]
+_data = {
+&"RESET": SubResource("Animation_c5apd"),
+&"shoot": SubResource("Animation_coqkk")
+}
+
 [node name="turret" type="Node3D" unique_id=1242701056]
+script = ExtResource("1_c5apd")
 
 [node name="turretBace" type="Node3D" parent="." unique_id=361368607]
 
 [node name="turretTop" type="Node3D" parent="turretBace" unique_id=590238690]
+
+[node name="Cannon" parent="turretBace/turretTop" unique_id=144096597 instance=ExtResource("2_coqkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="turretBace/turretTop" unique_id=926542846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+use_collision = true
+collision_mask = 2
+size = Vector3(2, 2, 2)
+
+[node name="turretbase" type="Node3D" parent="." unique_id=250542162]
+
+[node name="TurretBase" parent="turretbase" unique_id=724746301 instance=ExtResource("3_2kw7u")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=263230519]
+libraries/ = SubResource("AnimationLibrary_2kw7u")
+
+[node name="Timer" type="Timer" parent="." unique_id=68443449]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="turretbase/TurretBase"]

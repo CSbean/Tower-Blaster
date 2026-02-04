@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://rsjrlc64rwj4"]
+
+[ext_resource type="Script" uid="uid://c6rk1bjbws8t6" path="res://cannon_projectile.gd" id="1_n5pep"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_au73y"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_au73y"]
+material = SubResource("StandardMaterial3D_au73y")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n5pep"]
+
+[node name="cannon_projectile" type="Area3D" unique_id=1695952878]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_n5pep")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=166858927]
+mesh = SubResource("SphereMesh_au73y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2136027962]
+shape = SubResource("SphereShape3D_n5pep")
+
+[node name="Timer" type="Timer" parent="." unique_id=1896545895]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
