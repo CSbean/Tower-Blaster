@@ -27,3 +27,4 @@ func _on_timer_timeout() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		body.take_damage()
+		queue_free()

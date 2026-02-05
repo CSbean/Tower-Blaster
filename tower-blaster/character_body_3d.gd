@@ -7,6 +7,7 @@ const JUMP_VELOCITY = 5 #3
 
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
+@onready var ui: Control = $"../UI"
 
 @export var health := 100
 
@@ -63,3 +64,4 @@ func rotate_camrea(delta: float, sense_mod: float = 1.0):
 
 func take_damage()->void:
 	health -= 5
+	ui.update_health(health)

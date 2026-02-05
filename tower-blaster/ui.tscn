@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bcvpva8vh2rb8"]
+
+[ext_resource type="Script" uid="uid://cq24l3im8uddl" path="res://ui.gd" id="1_fyqef"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xb563"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyqef"]
+font_size = 34
+
+[node name="UI" type="Control" unique_id=812937870]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fyqef")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1451275281]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=414985656]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -88.0
+offset_right = 120.0
+grow_vertical = 0
+size_flags_vertical = 8
+text = "100"
+label_settings = SubResource("LabelSettings_xb563")
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=1059287636]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -23.5
+offset_right = 20.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+label_settings = SubResource("LabelSettings_fyqef")
+horizontal_alignment = 1
