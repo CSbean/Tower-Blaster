@@ -15,6 +15,9 @@ var look_dir: Vector2
 var camra_sense := 50
 var capMouse := false
 
+func _ready() -> void:
+	change_mouse()
+
 
 func _process(_delta: float) -> void:
 	if ray_cast_3d.get_collider() is Area3D:
@@ -42,11 +45,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	if Input.is_action_just_pressed("pause"):
-		capMouse = !capMouse
-		if capMouse:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		change_mouse()
 	
 	rotate_camrea(delta)
 	move_and_slide()
@@ -65,3 +64,10 @@ func rotate_camrea(delta: float, sense_mod: float = 1.0):
 func take_damage()->void:
 	health -= 5
 	ui.update_health(health)
+
+func change_mouse()->void:
+	capMouse = !capMouse
+	if capMouse:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
