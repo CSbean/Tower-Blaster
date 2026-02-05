@@ -8,13 +8,17 @@ const JUMP_VELOCITY = 5 #3
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 
+@export var health := 100
+
 var look_dir: Vector2
 var camra_sense := 50
 var capMouse := false
 
-func _process(delta: float) -> void:
-	#if ray_cast_3d.is_colliding() and ray_cast_3d.get_collider()
-		pass
+
+func _process(_delta: float) -> void:
+	if ray_cast_3d.get_collider() is Area3D:
+		if Input.is_action_just_pressed("shoot"):
+			ray_cast_3d.get_collider().queue_free()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -38,7 +42,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("pause"):
 		capMouse = !capMouse
-		
 		if capMouse:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
@@ -57,3 +60,6 @@ func rotate_camrea(delta: float, sense_mod: float = 1.0):
 	rotation.y -= look_dir.x * camra_sense * delta
 	camera_3d.rotation.x = clamp(camera_3d.rotation.x - look_dir.y * camra_sense * sense_mod * delta,-1.5, 1.5)
 	look_dir = Vector2.ZERO
+
+func take_damage()->void:
+	health -= 5

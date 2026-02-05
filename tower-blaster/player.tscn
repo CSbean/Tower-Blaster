@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dpeom1qygvtrj"]
+
+[ext_resource type="Script" uid="uid://d3q4tfkljajwe" path="res://character_body_3d.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tlwt5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aqk2v"]
+
+[node name="Player" type="CharacterBody3D" unique_id=886504034]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=121343792]
+shape = SubResource("CapsuleShape3D_tlwt5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=705596932]
+mesh = SubResource("CapsuleMesh_aqk2v")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1682906372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5877781, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1744501616]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
+target_position = Vector3(0, -10, 0)
+collision_mask = 5
+collide_with_areas = true

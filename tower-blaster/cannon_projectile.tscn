@@ -14,6 +14,7 @@ material = SubResource("StandardMaterial3D_au73y")
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_n5pep")
+speed = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=166858927]
 mesh = SubResource("SphereMesh_au73y")
@@ -24,4 +25,5 @@ shape = SubResource("SphereShape3D_n5pep")
 [node name="Timer" type="Timer" parent="." unique_id=1896545895]
 wait_time = 2.0
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
