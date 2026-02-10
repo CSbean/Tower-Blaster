@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dpeom1qygvtrj" path="res://player.tscn" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://cmwrmmjohrkn7" path="res://turret.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://bcvpva8vh2rb8" path="res://ui.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://desne6l8gyo8j" path="res://base.tscn" id="4_aqk2v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gv5m4"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -46,3 +47,6 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0538187, 0, -17.764715)
 
 [node name="UI" parent="." unique_id=812937870 instance=ExtResource("3_tlwt5")]
+
+[node name="Base" parent="." unique_id=435660568 instance=ExtResource("4_aqk2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.100477, 0, -10.037796)

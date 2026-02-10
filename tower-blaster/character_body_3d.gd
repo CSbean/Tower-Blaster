@@ -2,8 +2,8 @@ extends CharacterBody3D
 class_name Player
 
 # https://www.youtube.com/watch?v=fAVetlIROXM
-const SPEED = 5.0
-const JUMP_VELOCITY = 5 #3
+var SPEED = 5.0
+const JUMP_VELOCITY = 3
 
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
@@ -14,15 +14,32 @@ const JUMP_VELOCITY = 5 #3
 var look_dir: Vector2
 var camra_sense := 50
 var capMouse := false
+var sprinting = false
 
 func _ready() -> void:
 	change_mouse()
 
 
 func _process(_delta: float) -> void:
-	if ray_cast_3d.get_collider() is Area3D:
-		if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
+		if ray_cast_3d.get_collider() is Area3D:
 			ray_cast_3d.get_collider().queue_free()
+	if Input.is_action_just_pressed("sprint_toggle"):
+		if not sprinting:
+			sprinting = true
+			SPEED = 10.0
+			print("on")
+		else:
+			sprinting = false
+			SPEED = 5.0
+			print("off")
+	
+	if Input.is_action_just_pressed("melee"):
+		if ray_cast_3d.is_colliding() and ray_cast_3d.get_collider() is Area3D:
+			var dist = ray_cast_3d.get_collision_point().distance_to(global_position)
+			if dist < 5:
+				ray_cast_3d.get_collider().reverse_direction(ray_cast_3d.get_collision_normal())
+				print("working")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
