@@ -41,12 +41,14 @@ _data = {
 &"shoot": SubResource("Animation_coqkk")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5apd"]
+size = Vector3(2, 2, 2)
+
 [node name="turret" type="Node3D" unique_id=1242701056]
 script = ExtResource("1_c5apd")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=926542846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
 use_collision = true
 collision_mask = 2
 size = Vector3(2, 2, 2)
@@ -67,6 +69,12 @@ libraries/ = SubResource("AnimationLibrary_2kw7u")
 
 [node name="Timer" type="Timer" parent="." unique_id=68443449]
 autostart = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=540098828]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=571529833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_c5apd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 

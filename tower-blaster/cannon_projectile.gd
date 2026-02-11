@@ -28,6 +28,14 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		body.take_damage()
 		queue_free()
+	
 
 func reverse_direction(collision_vector:Vector3)->void:
 	direction = direction.bounce(collision_vector)
+
+func parryed()->void:
+	speed = speed*2
+
+
+func _on_area_entered(area: Area3D) -> void:
+	area.get_parent().take_damage()
