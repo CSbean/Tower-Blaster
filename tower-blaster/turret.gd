@@ -8,6 +8,7 @@ class_name Turret
 
 var proj = preload("res://cannon_projectile.tscn")
 var health = 100
+var alive = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -32,6 +33,8 @@ func _on_timer_timeout() -> void:
 
 
 func take_damage()->void:
-	health = 0
-	cannon.rotate_x(-30.0)
-	create_tween()
+	if alive:
+		alive = false
+		health = 0
+		cannon.rotate_x(-30.0)
+		create_tween()

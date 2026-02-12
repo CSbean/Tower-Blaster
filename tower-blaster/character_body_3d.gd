@@ -22,8 +22,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
-		if ray_cast_3d.get_collider() is Area3D:
-			ray_cast_3d.get_collider().queue_free()
+		if ray_cast_3d.is_colliding():
+			if ray_cast_3d.get_collider() is Area3D:
+				ray_cast_3d.get_collider().queue_free()
+			if ray_cast_3d.get_collider().get_parent() is Base:
+				ray_cast_3d.get_collider().get_parent().take_damage(0.5)
 	if Input.is_action_just_pressed("sprint_toggle"):
 		if not sprinting:
 			sprinting = true

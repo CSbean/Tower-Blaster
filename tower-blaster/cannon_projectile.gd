@@ -2,12 +2,12 @@ extends Area3D
 
 
 @onready var timer: Timer = $Timer
-@onready var player: Player = $Player
+
 
 @export var speed : int
 
 var direction := Vector3.FORWARD
-
+var parry = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,7 +35,11 @@ func reverse_direction(collision_vector:Vector3)->void:
 
 func parryed()->void:
 	speed = speed*2
+	parry = true
 
 
 func _on_area_entered(area: Area3D) -> void:
-	area.get_parent().take_damage()
+	if area.get_parent() is Turret:
+		area.get_parent().take_damage()
+	if area.get_parent() is Base:
+		area.get_parent().take_damage(15)

@@ -5,6 +5,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpg24"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3vi8l"]
+size = Vector3(4, 5, 3)
+
 [node name="Base" type="Node3D" unique_id=435660568]
 script = ExtResource("1_3vi8l")
 
@@ -16,3 +19,9 @@ size = Vector3(4, 5, 3)
 material = SubResource("StandardMaterial3D_rpg24")
 
 [node name="Base" parent="." unique_id=2100562782 instance=ExtResource("1_rpg24")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1411092497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=27461510]
+shape = SubResource("BoxShape3D_3vi8l")

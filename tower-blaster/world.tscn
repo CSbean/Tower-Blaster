@@ -49,4 +49,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0538187, 0, -17.764715)
 [node name="UI" parent="." unique_id=812937870 instance=ExtResource("3_tlwt5")]
 
 [node name="Base" parent="." unique_id=435660568 instance=ExtResource("4_aqk2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.100477, 0, -10.037796)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.827291, 0, -7.842252)
