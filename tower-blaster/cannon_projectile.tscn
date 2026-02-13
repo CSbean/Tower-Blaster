@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_au73y")
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_n5pep")
-speed = 5
+speed = 15
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=166858927]
 mesh = SubResource("SphereMesh_au73y")

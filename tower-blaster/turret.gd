@@ -7,7 +7,7 @@ class_name Turret
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var proj = preload("res://cannon_projectile.tscn")
-var health = 100000000000
+var health = 100
 var alive = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,7 +34,7 @@ func _on_timer_timeout() -> void:
 
 func take_damage()->void:
 	if alive:
-		#alive = false
-		#health = 10
+		alive = false
+		health = 0
 		cannon.rotate_x(-30.0)
 		create_tween()

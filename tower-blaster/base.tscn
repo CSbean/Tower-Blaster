@@ -2,11 +2,15 @@
 
 [ext_resource type="Script" uid="uid://c43gvpko02t4e" path="res://base.gd" id="1_3vi8l"]
 [ext_resource type="PackedScene" uid="uid://cr2p8y25x6pcq" path="res://assets/Base.glb" id="1_rpg24"]
+[ext_resource type="PackedScene" uid="uid://cf83tst054i4w" path="res://progress_bar.tscn" id="3_8rhti"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpg24"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3vi8l"]
 size = Vector3(4, 5, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ohhpf"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="Base" type="Node3D" unique_id=435660568]
 script = ExtResource("1_3vi8l")
@@ -25,3 +29,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=27461510]
 shape = SubResource("BoxShape3D_3vi8l")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=208308776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.284321, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_ohhpf")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1799403574]
+disable_3d = true
+transparent_bg = true
+
+[node name="ProgressBar" parent="Sprite3D/SubViewport" unique_id=468172243 instance=ExtResource("3_8rhti")]
