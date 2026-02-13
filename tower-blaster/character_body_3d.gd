@@ -8,6 +8,7 @@ const JUMP_VELOCITY = 3
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 @onready var ui: Control = $"../UI"
+@onready var marker_3d: Marker3D = $Marker3D
 
 @export var health := 100
 
@@ -41,9 +42,10 @@ func _process(_delta: float) -> void:
 			if dist < 5:
 				#ray_cast_3d.get_collider().reverse_direction(ray_cast_3d.get_collision_normal())
 				#var global_dir = ($RayCast3D.to_global($RayCast3D.target_position) - $RayCast3D.global_position).normalized()
-				ray_cast_3d.get_collider().direction = ray_cast_3d.to_global((ray_cast_3d.target_position + ray_cast_3d.global_position)).normalized()
+				#ray_cast_3d.get_collider().direction = ray_cast_3d.to_global((ray_cast_3d.target_position + ray_cast_3d.global_position)).normalized()
 				#ray_cast_3d.get_collider().direction = to_global(rotation.normalized())
 				#print(ray_cast_3d.target_position + ray_cast_3d.global_position)
+				ray_cast_3d.get_collider().direction = global_position.direction_to(marker_3d.global_position)
 				ray_cast_3d.get_collider().parryed()
 
 func _physics_process(delta: float) -> void:

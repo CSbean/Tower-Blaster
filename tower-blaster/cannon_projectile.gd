@@ -17,7 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	global_position += direction * delta * speed
-
+	
 
 func _on_timer_timeout() -> void:
 	queue_free()
