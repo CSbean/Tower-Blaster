@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c43gvpko02t4e" path="res://base.gd" id="1_3vi8l"]
 [ext_resource type="PackedScene" uid="uid://cr2p8y25x6pcq" path="res://assets/Base.glb" id="1_rpg24"]
 [ext_resource type="PackedScene" uid="uid://cf83tst054i4w" path="res://progress_bar.tscn" id="3_8rhti"]
+[ext_resource type="PackedScene" uid="uid://b1webjidu18rm" path="res://explosion_particles.tscn" id="4_ohhpf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpg24"]
 
@@ -40,3 +41,6 @@ disable_3d = true
 transparent_bg = true
 
 [node name="ProgressBar" parent="Sprite3D/SubViewport" unique_id=468172243 instance=ExtResource("3_8rhti")]
+
+[node name="ExplosionParticles" parent="." unique_id=1495942892 instance=ExtResource("4_ohhpf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)

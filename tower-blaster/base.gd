@@ -2,6 +2,7 @@ extends Node3D
 class_name Base
 
 @onready var progress_bar: ProgressBar = $Sprite3D/SubViewport/ProgressBar
+@onready var explosion_particles: GPUParticles3D = $ExplosionParticles
 
 
 var health = 100
@@ -16,7 +17,13 @@ func _process(delta: float) -> void:
 
 func take_damage(num : float)->void:
 	health -= num
+	if health <= 0:
+		explode()
 	#https://www.youtube.com/watch?v=Afq4P6sS-xY
 	if progress_bar.value < num:
 		num = progress_bar.value
-	print(health)
+	progress_bar.value -= num
+
+
+func explode()->void:
+	explosion_particles.emitting = true

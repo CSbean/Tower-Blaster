@@ -50,8 +50,11 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_5wvwh")
 
 [node name="ExplosionParticles" type="GPUParticles3D" unique_id=1495942892]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 cast_shadow = 0
-amount = 64
-explosiveness = 0.75
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_1onfr")
 draw_pass_1 = SubResource("QuadMesh_gb05o")
