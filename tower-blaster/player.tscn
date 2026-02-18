@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpeom1qygvtrj"]
 
 [ext_resource type="Script" uid="uid://d3q4tfkljajwe" path="res://character_body_3d.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://bcfqv2ykm7n82" path="res://gun.tscn" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tlwt5"]
 
@@ -28,3 +29,6 @@ collide_with_areas = true
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1003266894]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588, -50)
+
+[node name="gun" parent="." unique_id=1207737730 instance=ExtResource("2_onrkg")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.6, 0.305, -0.633)

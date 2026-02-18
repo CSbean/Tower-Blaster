@@ -4,11 +4,12 @@ class_name Player
 # https://www.youtube.com/watch?v=fAVetlIROXM
 var SPEED = 5.0
 const JUMP_VELOCITY = 3
-
+#finish the game Over signal in world
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var ray_cast_3d: RayCast3D = $Camera3D/RayCast3D
 @onready var ui: Control = $"../UI"
 @onready var marker_3d: Marker3D = $Marker3D
+@onready var gun: Node3D = $gun
 
 @export var health := 100
 
@@ -16,6 +17,7 @@ var look_dir: Vector2
 var camra_sense := 50
 var capMouse := false
 var sprinting = false
+var gameOver = false
 
 func _ready() -> void:
 	change_mouse()
@@ -23,6 +25,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
+		gun.play("shoot")
 		if ray_cast_3d.is_colliding():
 			if ray_cast_3d.get_collider() is Area3D:
 				ray_cast_3d.get_collider().queue_free()
@@ -32,9 +35,11 @@ func _process(_delta: float) -> void:
 		if not sprinting:
 			sprinting = true
 			SPEED = 10.0
+			ui.sprint_toggle()
 		else:
 			sprinting = false
 			SPEED = 5.0
+			ui.sprint_toggle()
 	#projectile.direction = (ray.target_position - ray.global_position).normalized()
 	if Input.is_action_just_pressed("melee"):
 		if ray_cast_3d.is_colliding() and ray_cast_3d.get_collider() is Area3D:

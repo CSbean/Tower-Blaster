@@ -26,4 +26,5 @@ func take_damage(num : float)->void:
 
 
 func explode()->void:
+	progress_bar.visible = false
 	explosion_particles.emitting = true
