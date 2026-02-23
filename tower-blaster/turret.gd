@@ -37,4 +37,4 @@ func take_damage()->void:
 		alive = false
 		health = 0
 		cannon.rotate_x(-30.0)
-		create_tween()
+		#create_tween()

@@ -9,6 +9,7 @@ extends Area3D
 var direction := Vector3.FORWARD
 var parry = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -28,6 +29,8 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		body.take_damage()
 		queue_free()
+	else:
+		queue_free()
 	
 
 func reverse_direction(collision_vector:Vector3)->void:
@@ -39,7 +42,8 @@ func parryed()->void:
 
 
 func _on_area_entered(area: Area3D) -> void:
-	if area.get_parent() is Turret:
+	if area.get_parent() is Turret and parry:
+		print(area.get_parent())
 		area.get_parent().take_damage()
 	if area.get_parent() is Base:
 		area.get_parent().take_damage(15)

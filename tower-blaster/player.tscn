@@ -31,4 +31,4 @@ collide_with_areas = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588, -50)
 
 [node name="gun" parent="." unique_id=1207737730 instance=ExtResource("2_onrkg")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.6, 0.305, -0.633)
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, 0.5926254, 0.13822526, -0.80232275)

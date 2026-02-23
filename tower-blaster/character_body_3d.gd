@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 # https://www.youtube.com/watch?v=fAVetlIROXM
-var SPEED = 5.0
+var SPEED = 30.0 #5.0
 const JUMP_VELOCITY = 3
 #finish the game Over signal in world
 @onready var camera_3d: Camera3D = $Camera3D
