@@ -44,6 +44,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5apd"]
 size = Vector3(2, 2, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_coqkk"]
+size = Vector3(20, 5, 20)
+
 [node name="turret" type="Node3D" unique_id=1242701056]
 script = ExtResource("1_c5apd")
 
@@ -77,6 +80,15 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_c5apd")
 
+[node name="Area3D2" type="Area3D" parent="." unique_id=451275295]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=1140544727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_coqkk")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]
 
 [editable path="turretbase/TurretBase"]

@@ -5,14 +5,21 @@ class_name Turret
 @onready var player: Player = $"../Player"
 @onready var cannon: Node3D = $turretBace/turretTop/Cannon
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var collision_shape_3d: CollisionShape3D = $Area3D2/CollisionShape3D
+
+
+@export var rangeX = 20
+@export var rangeZ = 20
 
 var proj = preload("res://cannon_projectile.tscn")
 var health = 100
 var alive = true
+var playerInRange = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	collision_shape_3d.shape.size = Vector3(rangeX,5,rangeZ)
+	print(name,collision_shape_3d.shape.size)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -23,7 +30,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if health > 0:
+	if health > 0 and playerInRange:
 		var new_proj = proj.instantiate()
 		add_child(new_proj)
 		new_proj.global_position = cannon.global_position
@@ -38,3 +45,13 @@ func take_damage()->void:
 		health = 0
 		cannon.rotate_x(-30.0)
 		#create_tween()
+
+
+func _on_area_3d_2_body_entered(body: Node3D) -> void:
+	if body is Player:
+		playerInRange = true
+	
+
+func _on_area_3d_2_body_exited(body: Node3D) -> void:
+	if body is Player:
+		playerInRange = false
