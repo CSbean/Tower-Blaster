@@ -17,41 +17,42 @@ var look_dir: Vector2
 var camra_sense := 50
 var capMouse := false
 var sprinting = false
-var gameOver = false
+var playing = true
 
 func _ready() -> void:
 	change_mouse()
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
-		gun.play("shoot")
-		if ray_cast_3d.is_colliding():
-			if ray_cast_3d.get_collider() is Area3D:
-				ray_cast_3d.get_collider().queue_free()
-			if ray_cast_3d.get_collider().get_parent() is Base:
-				ray_cast_3d.get_collider().get_parent().take_damage(0.5)
-	if Input.is_action_just_pressed("sprint_toggle"):
-		if not sprinting:
-			sprinting = true
-			SPEED = 15.0
-			ui.sprint_toggle()
-		else:
-			sprinting = false
-			SPEED = 5.0
-			ui.sprint_toggle()
-	#projectile.direction = (ray.target_position - ray.global_position).normalized()
-	if Input.is_action_just_pressed("melee"):
-		if ray_cast_3d.is_colliding() and ray_cast_3d.get_collider() is Area3D:
-			var dist = ray_cast_3d.get_collision_point().distance_to(global_position)
-			if dist < 5:
-				#ray_cast_3d.get_collider().reverse_direction(ray_cast_3d.get_collision_normal())
-				#var global_dir = ($RayCast3D.to_global($RayCast3D.target_position) - $RayCast3D.global_position).normalized()
-				#ray_cast_3d.get_collider().direction = ray_cast_3d.to_global((ray_cast_3d.target_position + ray_cast_3d.global_position)).normalized()
-				#ray_cast_3d.get_collider().direction = to_global(rotation.normalized())
-				#print(ray_cast_3d.target_position + ray_cast_3d.global_position)
-				ray_cast_3d.get_collider().direction = global_position.direction_to(marker_3d.global_position)
-				ray_cast_3d.get_collider().parryed()
+	if playing:
+		if Input.is_action_just_pressed("shoot"):
+			gun.play("shoot")
+			if ray_cast_3d.is_colliding():
+				if ray_cast_3d.get_collider() is Area3D:
+					ray_cast_3d.get_collider().queue_free()
+				if ray_cast_3d.get_collider().get_parent() is Base:
+					ray_cast_3d.get_collider().get_parent().take_damage(0.5)
+		if Input.is_action_just_pressed("sprint_toggle"):
+			if not sprinting:
+				sprinting = true
+				SPEED = 50.0#15.0
+				ui.sprint_toggle()
+			else:
+				sprinting = false
+				SPEED = 5.0
+				ui.sprint_toggle()
+		#projectile.direction = (ray.target_position - ray.global_position).normalized()
+		if Input.is_action_just_pressed("melee"):
+			if ray_cast_3d.is_colliding() and ray_cast_3d.get_collider() is Area3D:
+				var dist = ray_cast_3d.get_collision_point().distance_to(global_position)
+				if dist < 5:
+					#ray_cast_3d.get_collider().reverse_direction(ray_cast_3d.get_collision_normal())
+					#var global_dir = ($RayCast3D.to_global($RayCast3D.target_position) - $RayCast3D.global_position).normalized()
+					#ray_cast_3d.get_collider().direction = ray_cast_3d.to_global((ray_cast_3d.target_position + ray_cast_3d.global_position)).normalized()
+					#ray_cast_3d.get_collider().direction = to_global(rotation.normalized())
+					#print(ray_cast_3d.target_position + ray_cast_3d.global_position)
+					ray_cast_3d.get_collider().direction = global_position.direction_to(marker_3d.global_position)
+					ray_cast_3d.get_collider().parryed()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

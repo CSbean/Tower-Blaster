@@ -46,9 +46,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.59462, 0, -32.353825)
 
 [node name="turret12" parent="." unique_id=735083019 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.496182, 0, -31.5074)
+rangeX = 70
+rangeZ = 70
+color = Color(0.3893333, 0.8, 0.35999998, 1)
 
 [node name="turret13" parent="." unique_id=236917064 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.245674, 0, -18.891153)
+rangeX = 70
+rangeZ = 40
+color = Color(0.1951851, 0.29397863, 0.55650055, 1)
 
 [node name="UI" parent="." unique_id=812937870 instance=ExtResource("3_tlwt5")]
 
@@ -57,35 +63,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51398516, 0, -16.039906)
 
 [node name="turret2" parent="." unique_id=2099862574 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.429543, 0, 34.596)
-rangeX = 100
-rangeZ = 100
+rangeX = 200
+rangeZ = 50
 
 [node name="turret3" parent="." unique_id=602886092 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.934475, 0, 24.684368)
+rangeX = 200
+rangeZ = 200
 
 [node name="turret5" parent="." unique_id=492311267 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5989, 0, 9.82831)
+rangeX = 200
+rangeZ = 200
 
 [node name="turret6" parent="." unique_id=944390453 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.48646, 0, -11.652382)
+rangeX = 200
+rangeZ = 200
 
 [node name="turret11" parent="." unique_id=1914788794 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.054148, 0, -37.309006)
+rangeX = 200
+rangeZ = 200
 
 [node name="turret4" parent="." unique_id=1111293291 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94, 0, 24.684)
+rangeX = 200
+rangeZ = 200
 
 [node name="turret10" parent="." unique_id=1980835822 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.482113, 0, 34.399296)
+rangeX = 40
+rangeZ = 40
 
 [node name="turret7" parent="." unique_id=1031691807 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.703056, 0, 9.033512)
+rangeX = 100
+rangeZ = 100
 
 [node name="turret9" parent="." unique_id=1612955851 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.61997, 0, 1.4220839)
+rangeX = 100
+rangeZ = 100
 
 [node name="turret8" parent="." unique_id=312979946 instance=ExtResource("2_fj7yv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.639225, 0, -10.554806)
+rangeX = 200
+rangeZ = 200
 
 [node name="OutsideWalls" type="Node3D" parent="." unique_id=493074190]
 

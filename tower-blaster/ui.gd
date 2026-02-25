@@ -6,9 +6,12 @@ extends Control
 @onready var time: Label = $CanvasLayer/time
 @onready var timer: Timer = $Timer
 
+
 signal timeOut
 
 var ST = false
+var win = false
+var loss = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -16,7 +19,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	time.text = format_time(timer.time_left) #str(int(timer.time_left))
+	time.text = format_time(timer.time_left)
+	if win:
+		sprint_t.visible = false
+		health.visible = false
+		time.visible = false
+	if loss:
+		pass
+	
 
 func update_health(num)->void:
 	health.text = str(num)

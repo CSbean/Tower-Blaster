@@ -10,7 +10,7 @@ class_name Turret
 
 @export var rangeX = 20
 @export var rangeZ = 20
-
+@export var color:Color=Color.INDIAN_RED
 var proj = preload("res://cannon_projectile.tscn")
 var health = 100
 var alive = true
@@ -18,7 +18,10 @@ var playerInRange = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	collision_shape_3d.shape.size = Vector3(rangeX,5,rangeZ)
+	var range_box := BoxShape3D.new()
+	range_box.size=Vector3(rangeX,5,rangeZ)
+	collision_shape_3d.shape = range_box
+	collision_shape_3d.debug_color=color
 	print(name,collision_shape_3d.shape.size)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
