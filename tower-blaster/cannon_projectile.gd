@@ -17,7 +17,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	global_position += direction * delta * speed
+	if GameMangager.playing:
+		global_position += direction * delta * speed
+	else:
+		queue_free()
 	
 
 func _on_timer_timeout() -> void:
@@ -37,13 +40,13 @@ func reverse_direction(collision_vector:Vector3)->void:
 	direction = direction.bounce(collision_vector)
 
 func parryed()->void:
+	
 	speed = speed*2
 	parry = true
 
 
 func _on_area_entered(area: Area3D) -> void:
 	if area.get_parent() is Turret and parry:
-		print(area.get_parent())
 		area.get_parent().take_damage()
 	if area.get_parent() is Base:
 		area.get_parent().take_damage(15)

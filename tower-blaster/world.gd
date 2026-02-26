@@ -10,17 +10,21 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if base.win:#start here
 		ui.win = true
 		gameWin()
+	ui.update_score(player.score)
 
 func gameOver()->void:
 	if ui.timeOut or ui.loss:
-		player.playing = false
+		GameMangager.playing = false
 
 func gameWin()->void:
 	if ui.win:
-		player.playing = false #.alive = false
+		GameMangager.playing = false #.alive = false
 		for obj in get_tree().get_nodes_in_group("turets"):
-			obj.alive = false
+			obj.game_end()
+
+#func parry_points()->void:
+#	player.score+= 20

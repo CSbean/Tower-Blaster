@@ -47,8 +47,13 @@ func take_damage()->void:
 		alive = false
 		health = 0
 		cannon.rotate_x(-30.0)
+		player.score+=20
 		#create_tween()
 
+func game_end()->void:
+	alive = false
+	health = 0
+	cannon.rotate_x(-30.0)
 
 func _on_area_3d_2_body_entered(body: Node3D) -> void:
 	if body is Player:

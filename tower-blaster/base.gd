@@ -3,6 +3,7 @@ class_name Base
 
 @onready var progress_bar: ProgressBar = $Sprite3D/SubViewport/ProgressBar
 @onready var explosion_particles: GPUParticles3D = $ExplosionParticles
+@onready var player: Player = $"../Player"
 
 
 var health = 100
@@ -29,5 +30,7 @@ func take_damage(num : float)->void:
 
 
 func explode()->void:
+	player.score+= 1000
+	GameMangager.playing = false
 	progress_bar.visible = false
 	explosion_particles.emitting = true

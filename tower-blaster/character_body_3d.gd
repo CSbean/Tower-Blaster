@@ -18,18 +18,19 @@ var camra_sense := 50
 var capMouse := false
 var sprinting = false
 var playing = true
-
+var score = 0
 func _ready() -> void:
 	change_mouse()
 
 
 func _process(_delta: float) -> void:
-	if playing:
+	if GameMangager.playing:
 		if Input.is_action_just_pressed("shoot"):
 			gun.play("shoot")
 			if ray_cast_3d.is_colliding():
 				if ray_cast_3d.get_collider() is Area3D:
 					ray_cast_3d.get_collider().queue_free()
+					score += 5
 				if ray_cast_3d.get_collider().get_parent() is Base:
 					ray_cast_3d.get_collider().get_parent().take_damage(0.5)
 		if Input.is_action_just_pressed("sprint_toggle"):
@@ -55,30 +56,31 @@ func _process(_delta: float) -> void:
 					ray_cast_3d.get_collider().parryed()
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	if GameMangager.playing:
+		# Add the gravity.
+		if not is_on_floor():
+			velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		# Handle jump.
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("move_left", "move_right", "move_foward", "move_back")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var input_dir := Input.get_vector("move_left", "move_right", "move_foward", "move_back")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+		rotate_camrea(delta)
+		move_and_slide()
+		
 	if Input.is_action_just_pressed("pause"):
 		change_mouse()
-	
-	rotate_camrea(delta)
-	move_and_slide()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: 

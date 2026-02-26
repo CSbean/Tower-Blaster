@@ -15,6 +15,10 @@ run/main_scene="uid://ccfctcrw0lrm5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameMangager="*uid://co60veyl7c2eh"
+
 [global_group]
 
 turets=""
