@@ -94,8 +94,12 @@ func rotate_camrea(delta: float, sense_mod: float = 1.0):
 	look_dir = Vector2.ZERO
 
 func take_damage()->void:
-	health -= 5
-	ui.update_health(health)
+	if health >0:
+		health -= 5
+		ui.update_health(health)
+	else:
+		GameMangager.playing = false
+		ui.loss = true
 
 func change_mouse()->void:
 	capMouse = !capMouse

@@ -19,7 +19,11 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_27fn8"]
 font_size = 100
-font_color = Color(0.14999998, 1, 0, 1)
+font_color = Color(0.0666666, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5ude"]
+font_size = 100
+outline_color = Color(1, 0, 0, 1)
 
 [node name="UI" type="Control" unique_id=812937870]
 layout_mode = 3
@@ -129,7 +133,7 @@ grow_vertical = 2
 [node name="ColorRect" type="ColorRect" parent="victory" unique_id=1585380218]
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 2
-color = Color(0.11, 0.11, 0.11, 0.2509804)
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="victory" unique_id=1953381004]
 layout_mode = 2
@@ -139,4 +143,45 @@ label_settings = SubResource("LabelSettings_27fn8")
 [node name="VBoxContainer" type="VBoxContainer" parent="victory" unique_id=1901838655]
 layout_mode = 2
 
+[node name="lossbox" type="CenterContainer" parent="." unique_id=215491141]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="lossbox" unique_id=283130604]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="lossbox" unique_id=2123777064]
+layout_mode = 2
+text = "You lost"
+label_settings = SubResource("LabelSettings_n5ude")
+
+[node name="restartButton" type="Button" parent="." unique_id=1641084633]
+visible = false
+layout_mode = 0
+offset_left = 357.0
+offset_top = 394.00003
+offset_right = 418.0
+offset_bottom = 425.00003
+scale = Vector2(1.47956, 1.47956)
+text = "restart"
+
+[node name="quitButton" type="Button" parent="." unique_id=1681665620]
+visible = false
+layout_mode = 0
+offset_left = 732.0
+offset_top = 394.0
+offset_right = 771.0
+offset_bottom = 425.0
+scale = Vector2(1.4866679, 1.4866679)
+text = "quit"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="restartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]
