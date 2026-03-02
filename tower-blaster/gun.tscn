@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bcfqv2ykm7n82"]
 
 [ext_resource type="Script" uid="uid://dgl2es4tnwe7d" path="res://gun.gd" id="1_vk1bi"]
+[ext_resource type="ArrayMesh" uid="uid://du7ic2xounkx7" path="res://assets/Pistol_02.obj" id="2_dk5gl"]
+[ext_resource type="AudioStream" uid="uid://dab3u3fnk6o3w" path="res://assets/369528__johandeecke__short-gunshot.wav" id="3_kw0bs"]
 
 [sub_resource type="Animation" id="Animation_vk1bi"]
 length = 0.001
@@ -44,11 +46,20 @@ transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09
 script = ExtResource("1_vk1bi")
 
 [node name="barrel" type="CSGBox3D" parent="." unique_id=1334562479]
+visible = false
 size = Vector3(3, 1, 1)
 
 [node name="handle" type="CSGBox3D" parent="." unique_id=768935623]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, 0)
+visible = false
 size = Vector3(1, 2, 1)
+
+[node name="Pistol02" type="MeshInstance3D" parent="." unique_id=201241278]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("2_dk5gl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1691390141]
 libraries/ = SubResource("AnimationLibrary_vk1bi")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=730225587]
+stream = ExtResource("3_kw0bs")

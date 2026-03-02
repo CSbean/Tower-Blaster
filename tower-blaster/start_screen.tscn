@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dy1564xmk8ykk"]
 
 [ext_resource type="Texture2D" uid="uid://d35hup8gbm4ip" path="res://assets/Screenshot 2026-02-27 121547.png" id="1_ncxyx"]
+[ext_resource type="Script" uid="uid://bh4rtuhqf3bid" path="res://start_screen.gd" id="1_pevhg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pevhg"]
 font_size = 64
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pevhg")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1570866447]
 layout_mode = 1
@@ -42,3 +44,15 @@ offset_right = 315.0
 offset_bottom = 427.0
 scale = Vector2(2.4589078, 2.4589078)
 text = "Start"
+
+[node name="quitButton" type="Button" parent="." unique_id=1461951669]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 383.0
+offset_right = 791.0
+offset_bottom = 414.0
+scale = Vector2(2.454415, 2.454415)
+text = "Quit"
+
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]

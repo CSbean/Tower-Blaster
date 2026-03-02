@@ -7,10 +7,12 @@ extends Control
 @onready var timer: Timer = $Timer
 @onready var score_label: Label = $MarginContainer/scoreLabel
 @onready var victory: CenterContainer = $victory
-@onready var label_2: Label = $Label2
+#@onready var label_2: Label = $Label2
 @onready var lossbox: CenterContainer = $lossbox
 @onready var restart_button: Button = $restartButton
 @onready var quit_button: Button = $quitButton
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var label_22: Label = $Label22
 
 
 
@@ -28,6 +30,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	time.text = format_time(timer.time_left)
 	if win:
+		if !audio_stream_player.playing:
+			audio_stream_player.play()
 		quit_button.visible = true
 		restart_button.visible = true
 		sprint_t.visible = false
@@ -35,7 +39,7 @@ func _process(_delta: float) -> void:
 		time.visible = false
 		score_label.visible = false
 		victory.visible = true
-		label_2.visible = true
+		label_22.visible = true
 	if loss:
 		quit_button.visible = true
 		sprint_t.visible = false
@@ -43,9 +47,9 @@ func _process(_delta: float) -> void:
 		time.visible = false
 		score_label.visible = false
 		lossbox.visible = true
-		label_2.visible = true
+		label_22.visible = true
 		restart_button.visible = true
-	
+
 
 func update_health(num)->void:
 	health.text = str(num)
@@ -65,7 +69,7 @@ func format_time(total_seconds: float) -> String:
 	
 func update_score(num: int)->void:
 	score_label.text = "Score:" + str(num)
-	label_2.text = "Score:" + str(num)
+	label_22.text = "Score:" + str(num)
 
 func _on_timer_timeout() -> void:
 	timeOut.emit()

@@ -67,7 +67,7 @@ rangeX = 200
 rangeZ = 50
 
 [node name="turret3" parent="." unique_id=602886092 instance=ExtResource("2_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.934475, 0, 24.684368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.963505, 0, 24.523815)
 rangeX = 200
 rangeZ = 200
 

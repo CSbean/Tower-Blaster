@@ -10,6 +10,7 @@ const JUMP_VELOCITY = 3
 @onready var ui: Control = $"../UI"
 @onready var marker_3d: Marker3D = $Marker3D
 @onready var gun: Node3D = $gun
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @export var health := 100
 
@@ -31,7 +32,7 @@ func _process(_delta: float) -> void:
 				if ray_cast_3d.get_collider() is Area3D:
 					ray_cast_3d.get_collider().queue_free()
 					score += 5
-				if ray_cast_3d.get_collider().get_parent() is Base:
+				elif ray_cast_3d.get_collider().get_parent() is Base:
 					ray_cast_3d.get_collider().get_parent().take_damage(0.5)
 		if Input.is_action_just_pressed("sprint_toggle"):
 			if not sprinting:
@@ -97,6 +98,7 @@ func take_damage()->void:
 	if health >0:
 		health -= 5
 		ui.update_health(health)
+		audio_stream_player.play()
 	else:
 		GameMangager.playing = false
 		ui.loss = true
