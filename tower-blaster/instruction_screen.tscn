@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c4nvduuate8ov"]
+
+[ext_resource type="Script" uid="uid://rhvbny6kdowg" path="res://instruction_screen.gd" id="1_pl6jf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s3eh1"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_pl6jf"]
+font_size = 24
+
+[node name="instructionScreen" type="Control" unique_id=1149141410]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pl6jf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1055858171]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=969916798]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.5
+offset_right = 47.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "How To Play"
+label_settings = SubResource("LabelSettings_s3eh1")
+
+[node name="Label2" type="Label" parent="." unique_id=231646835]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 146.0
+offset_right = 1525.0
+offset_bottom = 500.0
+text = "find the enemy base somewere in the maze and distroy it
+ you can not shoot the turets but you can shoot there bullets and parry them (Right Click)
+ the turret bullets also do big damage to the base."
+label_settings = SubResource("LabelSettings_pl6jf")
+
+[node name="Button" type="Button" parent="." unique_id=413744216]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 584.0
+offset_right = 79.0
+offset_bottom = 615.0
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

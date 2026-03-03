@@ -1,5 +1,5 @@
 extends Area3D
-
+class_name cannonBall
 
 @onready var timer: Timer = $Timer
 
@@ -49,4 +49,4 @@ func _on_area_entered(area: Area3D) -> void:
 	if area.get_parent() is Turret and parry:
 		area.get_parent().take_damage()
 	if area.get_parent() is Base:
-		area.get_parent().take_damage(15)
+		area.get_parent().take_damage(10)

@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Tower-Blaster"
-run/main_scene="uid://ccfctcrw0lrm5"
+run/main_scene="uid://dy1564xmk8ykk"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameMangager="*uid://co60veyl7c2eh"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [global_group]
 

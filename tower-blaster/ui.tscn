@@ -20,6 +20,7 @@ font_color = Color(0.0666666, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_n5ude"]
 font_size = 100
+font_color = Color(1, 0, 0, 1)
 outline_color = Color(1, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ibotj"]
@@ -38,7 +39,7 @@ grow_vertical = 2
 script = ExtResource("1_fyqef")
 
 [node name="Timer" type="Timer" parent="." unique_id=1137039863]
-wait_time = 120.0
+wait_time = 62.0
 autostart = true
 
 [node name="crosshair" type="Label" parent="." unique_id=1059287636]

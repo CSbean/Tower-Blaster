@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("sprint_toggle"):
 			if not sprinting:
 				sprinting = true
-				SPEED = 50.0#15.0
+				SPEED = 15.0#50.0
 				ui.sprint_toggle()
 			else:
 				sprinting = false
@@ -45,7 +45,7 @@ func _process(_delta: float) -> void:
 				ui.sprint_toggle()
 		#projectile.direction = (ray.target_position - ray.global_position).normalized()
 		if Input.is_action_just_pressed("melee"):
-			if ray_cast_3d.is_colliding() and ray_cast_3d.get_collider() is Area3D:
+			if ray_cast_3d.is_colliding() and ray_cast_3d.get_collider() is cannonBall:
 				var dist = ray_cast_3d.get_collision_point().distance_to(global_position)
 				if dist < 5:
 					#ray_cast_3d.get_collider().reverse_direction(ray_cast_3d.get_collision_normal())

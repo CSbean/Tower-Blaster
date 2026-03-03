@@ -54,5 +54,14 @@ offset_bottom = 414.0
 scale = Vector2(2.454415, 2.454415)
 text = "Quit"
 
+[node name="Button" type="Button" parent="." unique_id=451022153]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 508.0
+offset_right = 611.0
+offset_bottom = 539.0
+text = "How To Play"
+
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

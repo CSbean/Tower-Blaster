@@ -16,6 +16,9 @@ func _process(_delta: float) -> void:
 		ui.win = true
 		stoper += 1
 		gameWin()
+	if ui.loss and stoper == 0:
+		stoper +=1
+		gameOver()
 	ui.update_score(player.score)
 
 func gameOver()->void:
