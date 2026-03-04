@@ -8,6 +8,9 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_pl6jf"]
 font_size = 24
 
+[sub_resource type="LabelSettings" id="LabelSettings_dcchn"]
+font_size = 34
+
 [node name="instructionScreen" type="Control" unique_id=1149141410]
 layout_mode = 3
 anchors_preset = 15
@@ -56,5 +59,17 @@ offset_top = 584.0
 offset_right = 79.0
 offset_bottom = 615.0
 text = "Back"
+
+[node name="Label3" type="Label" parent="." unique_id=1576185457]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 279.0
+offset_right = 419.0
+offset_bottom = 476.0
+text = "W,A,S,D to move 
+SPACE to jump
+LEFT CLICK to shoot
+RIGHT CLICK to parry"
+label_settings = SubResource("LabelSettings_dcchn")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
